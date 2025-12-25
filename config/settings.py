@@ -1,10 +1,7 @@
 import os
 from pathlib import Path
 
-from django.conf.global_settings import AUTH_USER_MODEL
 from dotenv import load_dotenv
-
-import accounts.apps
 
 load_dotenv()
 
@@ -25,7 +22,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # added
+    # 3rd-party apps
+    "rest_framework",
+    "corsheaders",
+    # local
     "accounts.apps.AccountsConfig",
 ]
 

@@ -7,7 +7,7 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
 
     model = CustomUser
-    list_display = ["email", "username", "pseudonym", "is_staff"]
+    list_display = ["username", "pseudonym"]
     fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("pseudonym",)}),)
     add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("pseudonym",)}),)
 

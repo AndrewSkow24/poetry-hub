@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { poemAPI } from "./services/api";
 import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [poems, setPoems] = useState([]);
@@ -42,10 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>PoetryHubPlatform</h1>
-        <p>Платформа поэтов нового поколения</p>
-      </header>
+      <Header />
 
       <main className="poems-container">
         <div className="stats">
@@ -85,6 +84,8 @@ function App() {
         </div>
         {/* end poem-list */}
       </main>
+
+      <Footer />
     </div>
   );
 }

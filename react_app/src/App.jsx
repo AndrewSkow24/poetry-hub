@@ -57,7 +57,12 @@ function App() {
           {poems.map((poem) => (
             <div className="poem-card" key={poem.id}>
               <h2 className="poem-title">{poem.title}</h2>
-              <div className="poem-author">Автор: {poem.author}</div>
+              <div className="poem-author">
+                Автор:{" "}
+                {poem.author.pseudonym
+                  ? poem.author.pseudonym
+                  : poem.author.username}
+              </div>
               <div className="poem-body">
                 {poem.body.split("\r\n").map((line, index) => (
                   <p key={index} className="poem-line">

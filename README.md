@@ -1,4 +1,5 @@
 # poetry-hub
+
 PoetryHubPlatform - платформа для поэтов нового поколения
 
-![img.png](img.png)
+![скрин сайта](image.png)

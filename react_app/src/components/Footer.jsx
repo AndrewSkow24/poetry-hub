@@ -1,3 +1,5 @@
+import "./Footer.css";
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -8,6 +10,39 @@ const Footer = () => {
           <p className="footer-copyright">
             © {new Date().getFullYear()} PoetryHubPlatform
           </p>
+        </div>
+        <div className="footer-sections">
+          <h4>Разделы</h4>
+          <ul className="footer-links">
+            <li>
+              <a href="/">Главная</a>
+            </li>
+            <li>
+              <a href="/">Все стихи</a>
+            </li>
+            <li>
+              <a href="/">Авторы</a>
+            </li>
+            <li>
+              <a href="/">Подборки</a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="footer-sections">
+          <h4>Контакты</h4>
+          <div className="social-links">
+            <a href="" className="social-icon" aria-label="Telegram">
+              📱
+            </a>
+            <a href="" className="social-icon" aria-label="GitHub">
+              💻
+            </a>
+            <a href="" className="social-icon" aria-label="Email">
+              ✉️
+            </a>
+          </div>
+          <p className="footer-email">contact@poetryhub.ru</p>
         </div>
       </div>
     </footer>

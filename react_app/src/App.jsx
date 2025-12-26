@@ -43,46 +43,52 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
       <Header />
 
-      <main className="poems-container">
-        <div className="stats">
-          <p>Всего стихов: {poems.length}</p>
-        </div>
-
-        {/* start poem-list */}
-        <div className="poems-list">
-          {poems.map((poem) => (
-            <div className="poem-card" key={poem.id}>
-              <h2 className="poem-title">{poem.title}</h2>
-              <div className="poem-author">
-                Автор:{" "}
-                {poem.author.pseudonym
-                  ? poem.author.pseudonym
-                  : poem.author.username}
-              </div>
-              <div className="poem-body">
-                {poem.body.split("\r\n").map((line, index) => (
-                  <p key={index} className="poem-line">
-                    {line || <br />}
-                  </p>
-                ))}
-              </div>
-
-              <div className="poem-meta">
-                <span className="poem-date">
-                  Дата: {new Date(poem.created_at).toLocaleDateString("ru-Ru")}
-                </span>
-                <br />
-                <span>
-                  Время: {new Date(poem.created_at).toLocaleTimeString("ru-Ru")}
-                </span>
-              </div>
+      <main className="main-content">
+        <div className="content-wrapper">
+          <div className="poems-container">
+            <div className="stats">
+              <p>Всего стихов: {poems.length}</p>
             </div>
-          ))}
+
+            {/* start poem-list */}
+            <div className="poems-list">
+              {poems.map((poem) => (
+                <div className="poem-card" key={poem.id}>
+                  <h2 className="poem-title">{poem.title}</h2>
+                  <div className="poem-author">
+                    Автор:{" "}
+                    {poem.author.pseudonym
+                      ? poem.author.pseudonym
+                      : poem.author.username}
+                  </div>
+                  <div className="poem-body">
+                    {poem.body.split("\r\n").map((line, index) => (
+                      <p key={index} className="poem-line">
+                        {line || <br />}
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className="poem-meta">
+                    <span className="poem-date">
+                      Дата:{" "}
+                      {new Date(poem.created_at).toLocaleDateString("ru-Ru")}
+                    </span>
+                    <br />
+                    <span>
+                      Время:{" "}
+                      {new Date(poem.created_at).toLocaleTimeString("ru-Ru")}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* end poem-list */}
+          </div>
         </div>
-        {/* end poem-list */}
       </main>
 
       <Footer />

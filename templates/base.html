@@ -14,14 +14,14 @@
   <body>
   {% include 'includes/header.html' %}
 
-
-    <div class="container">
+<div class="container py-4">
     {% block content %}
 
     {% endblock %}
 
 
-    </div>
+        {% include 'includes/footer.html' %}
+</div>
 
 
   </body>

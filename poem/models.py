@@ -12,7 +12,7 @@ class Poem(models.Model):
         blank=True,
     )
     title = models.CharField(max_length=100, verbose_name=gettext_lazy("Название"))
-    context = models.TextField(verbose_name=gettext_lazy("Содержание"))
+    content = models.TextField(verbose_name=gettext_lazy("Содержание"))
     history = models.TextField(verbose_name=gettext_lazy("История создания"))
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name=gettext_lazy("дата и время создания")

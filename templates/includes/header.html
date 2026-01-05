@@ -1,6 +1,8 @@
-<ul class="nav bg-info">
+
+<nav class="navbar bg-dark border-bottom border-body">
+<ul class="nav  justify-content-center">
     <li class="nav-item">
-        <a class="nav-link link-light" href="#">Главная</a>
+        <a class="nav-link link-light" href="/">Главная</a>
     </li>
     <li class="nav-item">
                <a class="nav-link link-light" href="#">Стихи</a>
@@ -8,4 +10,8 @@
     <li>
         <a class="nav-link link-light" href="#">Поэты</a>
     </li>
+    <li>
+        <a class="nav-link link-light" href={% url 'poem_create' %}>Добавить произведение</a>
+    </li>
 </ul>
+</nav>

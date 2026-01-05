@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Удаление {{object.title}} {% endblock title %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="alert">
+    <p>Вы действительно хотите удалить {{ object.title }} ?</p>
+        </div>
+    <button type="submit">Да</button>
+</form>
+
+{% endblock content %}

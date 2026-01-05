@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_icons %}
 
 {% block title %} Список произведений {% endblock title %}
 
@@ -13,7 +13,14 @@
                     <div class="card">
 
                         <div class="card-header">
-                            <h3>{{poem.title}} ({{poem.author}})</h3>
+                            <h3>
+                                <a href="{% url 'poem_detail' poem.pk %}">
+                                {{poem.title}} ({{poem.author}})
+                                    </a>
+                            </h3>
+                            <a href="{% url 'poem_update' poem.pk %}">{% bs_icon 'pencil-square' %}</a>
+                            <a href="{% url 'poem_delete' poem.pk %}">{% bs_icon 'trash' %}</a>
+
                         </div>
 
                         <div class="card-body">

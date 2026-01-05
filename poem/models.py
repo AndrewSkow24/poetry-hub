@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy
+from django.urls import reverse
 
 
 class Poem(models.Model):
@@ -23,3 +24,11 @@ class Poem(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.author}"
+
+    def get_absolute_url(self):
+        return reverse("poem_detail", kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name = "Произведение"
+        verbose_name_plural = "Произведения"
+        ordering = ["-created_at"]

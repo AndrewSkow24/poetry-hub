@@ -1,7 +1,12 @@
 import os
 from pathlib import Path
 
-from django.conf.global_settings import STATICFILES_DIRS
+from django.conf.global_settings import (
+    STATICFILES_DIRS,
+    LOGIN_URL,
+    LOGIN_REDIRECT_URL,
+    LOGOUT_REDIRECT_URL,
+)
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "poem",
     "django_bootstrap_icons",
+    "profiles",
 ]
 
 MIDDLEWARE = [
@@ -134,3 +140,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_URL = "/accounts/login/"
+
+LOGIN_REDIRECT_URL = "/"
+
+LOGOUT_REDIRECT_URL = "/"

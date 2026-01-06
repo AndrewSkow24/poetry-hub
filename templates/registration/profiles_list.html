@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Зарегистрированные поэты {% endblock title %}
+
+{% block content %}
+
+<ul>
+{% for poet in object_list %}
+    <li>
+        <a href="{% url 'profile_detail' poet.pk %}">{{poet.user }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock content %}

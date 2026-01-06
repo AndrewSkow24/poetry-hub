@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} {{object}} {% endblock title %}
+
+{% block content %}
+
+<h2>{{ object }}</h2>
+
+<div>
+    {% if object.avatar %}
+    <img src="{{object.avatar.url}}">
+    {% else %}
+    <p>Ещё нет фото</p>
+    {% endif %}
+
+    <p>{{object.pseudonym}}</p>
+    <p>{{object.bio}}</p>
+</div>
+
+{% endblock content %}

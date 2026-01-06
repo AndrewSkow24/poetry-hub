@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class UserProfile(models.Model):
@@ -29,5 +30,8 @@ class UserProfile(models.Model):
         verbose_name = "профили"
         ordering = ["-created_at"]
 
+    def get_absolute_url(self):
+        return reverse("profile_detail", kwargs={"pk": self.pk})
+
     def __str__(self):
-        return f"Профиль "
+        return f"Профиль {self.user} "

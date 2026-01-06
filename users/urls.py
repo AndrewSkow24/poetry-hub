@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import ProfileDetailView
+from users.views import ProfileDetailView
 from django.contrib.auth.models import User
 
 urlpatterns = [

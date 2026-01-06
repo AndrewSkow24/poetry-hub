@@ -1,12 +1,7 @@
 import os
 from pathlib import Path
 
-from django.conf.global_settings import (
-    STATICFILES_DIRS,
-    LOGIN_URL,
-    LOGIN_REDIRECT_URL,
-    LOGOUT_REDIRECT_URL,
-)
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -38,12 +33,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_cleanup",
-    "bootstrap5",
+    "django_bootstrap5",
     "crispy_forms",
     "crispy_bootstrap5",
     "poem",
     "django_bootstrap_icons",
-    "profiles",
+    "users",
 ]
 
 MIDDLEWARE = [

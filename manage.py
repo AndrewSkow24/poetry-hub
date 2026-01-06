@@ -3,6 +3,14 @@
 import os
 import sys
 
+# Применяем фикс для Python 3.14
+try:
+    from django_fix import apply_django_fix
+
+    apply_django_fix()
+except ImportError:
+    pass
+
 
 def main():
     """Run administrative tasks."""

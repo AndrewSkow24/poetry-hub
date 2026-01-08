@@ -1,29 +1,56 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">PoetryHubPlatform</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link {% if 'accounts/profiles' in request.path %} active {% endif %}"
+            aria-current="page"
+            href="{% url 'profiles_list' %}"
+            >Поэты</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'poem_list' %}" >Стихи</a>
+        </li>
+      </ul>
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item   " >
+          <a class="nav-link % {% if request.resolver_match.url_name == 'profile_detail' %} and request.resolver_match.kwargs.pk == user.profile.pk %}  {% endif %}" href="{% url 'profile_detail' user.profile.pk %}"
+            >Мой профиль</a
+          >
+        </li>
+        <li class="nav-item">
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="nav-link">Выйти</button>
+          </form>
+        </li>
+      </ul>
+      {% else%}
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registration' %}">Регистрация</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Войти</a>
+        </li>
+      </ul>
 
-<nav class="navbar bg-dark border-bottom border-body">
-<ul class="nav  justify-content-center">
-    <li class="nav-item">
-        <a class="nav-link link-light" href="/">Главная</a>
-    </li>
-    <li class="nav-item">
-               <a class="nav-link link-light" href="{% url 'poem_list' %}">Стихи</a>
-    </li>
-    <li>
-        <a class="nav-link link-light" href="{% url 'profiles_list' %}">Поэты</a>
-    </li>
-    <li>
-        <a class="nav-link link-light" href={% url 'poem_create' %}>Добавить произведение</a>
-    </li>
-
-    <li>
-                <a class="nav-link link-light" href={% url 'login' %}>Войти</a>
-
-    </li>
-    <li>
-        <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-
-            <button type="submit" class="nav-link link-light">Выйти</button>
-        </form>
-    </li>
-</ul>
+      {% endif %}
+    </div>
+  </div>
 </nav>

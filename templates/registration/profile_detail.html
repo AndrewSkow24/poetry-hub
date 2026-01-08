@@ -1,23 +1,121 @@
-
 {% extends 'base.html' %}
+<!--  -->
 {% load static %}
-
-
+<!--  -->
 {% block title %} {{object}} {% endblock title %}
-
+<!--  -->
 {% block content %}
 
-<h2>{{ object }}</h2>
+<div class="row">
+  <!-- Левая колонка: аватар и основная информация -->
+  <div class="col-lg-4 col-md-5 mb-4">
+    <div class="card shadow">
+      <div class="card-body text-center p-4">
+        <!-- Аватар -->
+        <div class="mb-4">
+          {% if object.avatar %}
+          <img
+            src="{{object.avatar.url}}"
+            alt="Аватар {{object.user.username}} "
+            class="rounded-circle border border-4 boder-primary mb-4"
+            style="width: 180px; height: 180px; object-fit: cover"
+          />
+          {% else %}
+          <!-- Заглушка -->
+          <div
+            class="rounded-circle border border-4 border-primary d-flex align-items-center justify-content-center mx-auto mb-3 bg-gradient"
+            style="
+              width: 180px;
+              height: 180px;
+              background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            "
+          >
+            <!-- Простой SVG через inline -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="80"
+              height="80"
+              fill="gray"
+              class="bi bi-person"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+              />
+            </svg>
+          </div>
+          {% endif %}
+        </div>
 
-<div>
-    {% if object.avatar %}
-    <img src="{{object.avatar.url}}">
-    {% else %}
-    <p>Ещё нет фото</p>
-    {% endif %}
+        <h4 class="card-tile mb-2">{{ object.user.username }}</h4>
+        <!-- Статистика -->
+        <div class="d-flex justify-content-around mb-4">
+          <div class="text-center">
+            <div class="h5 text-primary mb-1">
+              {{ object.user.poems.count }}
+              <div class="text-muted small">Стихов</div>
+            </div>
+            <div class="text-center">
+              <div class="h5 text-primary mb-1">
+                -
+                <div class="text-muted small">Лайков</div>
+              </div>
+              <div class="text-center">
+                <div class="h5 text-primary mb-1">
+                  -
+                  <div class="text-muted small">Подписчиков</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <p>{{object.pseudonym}}</p>
-    <p>{{object.bio}}</p>
+  <div class="col-lg-8 col-md-7">
+    <div class="card shadow mb-4">
+      <div class="card-header bg-whire border-0 pt-4">
+        <h5>
+          <i class="bi bi-info-circle text-primary me-2"></i>
+          Информация о пользователе
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <!-- bio -->
+          <div class="col-12 mb-4">
+            <h6 class="text-muted mb-3">О себе</h6>
+            {% if object.bio %}
+            <p class="lead-mb-0">{{ object.bio|linebreaks }}</p>
+            {% else %}
+            <p class="text-muted fst-italic mb-0">
+              Пользователь ещё не добавил информацию о себе.
+            </p>
+            {% endif %}
+          </div>
+          <!-- email -->
+          <div class="col-md-6 mb-3">
+            <h6 class="text-muted mb-3">Email</h6>
+            {% if object.user.email %}
+            <p class="lead-mb-0">{{ object.user.email }}</p>
+            {% else %}
+            <p class="text-muted fst-italic mb-0">Не указан</p>
+            {% endif %}
+          </div>
+          <!-- дата регистрации -->
+          <div class="col-md-6 mb-3">
+            <h6 class="text-muted mb-3">Дата регистрации</h6>
+            {% if object.created_at %}
+            <p class="lead-mb-0">{{ object.created_at }}</p>
+            {% else %}
+            <p class="text-muted fst-italic mb-0">-</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

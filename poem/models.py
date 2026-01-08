@@ -11,10 +11,13 @@ class Poem(models.Model):
         verbose_name=gettext_lazy("автор"),
         null=True,
         blank=True,
+        related_name="poems",
     )
     title = models.CharField(max_length=100, verbose_name=gettext_lazy("Название"))
     content = models.TextField(verbose_name=gettext_lazy("Содержание"))
-    history = models.TextField(verbose_name=gettext_lazy("История создания"))
+    history = models.TextField(
+        verbose_name=gettext_lazy("История создания"), null=True, blank=True
+    )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name=gettext_lazy("дата и время создания")
     )
